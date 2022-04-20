@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { getArticleById } from '../utils/api';
+import Comments from './Comments';
 import Votes from './Votes';
 
 const SingleArticle = () => {
@@ -43,6 +44,7 @@ const SingleArticle = () => {
 				<Votes article_id={article_id} setArticle={setArticle} votes={votes} />
 				Comments: {comment_count}
 			</p>
+			<Comments article_id={article_id} />
 		</>
 	);
 };

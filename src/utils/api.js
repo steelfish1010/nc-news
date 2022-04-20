@@ -30,6 +30,12 @@ export const getTopics = () => {
 	});
 };
 
+export const getCommentsByArticleId = (article_id) => {
+	return myApi.get(`/articles/${article_id}/comments`).then(({ data }) => {
+		return data.comments;
+	});
+};
+
 export const updateVotes = (article_id, vote) => {
 	return myApi
 		.patch(`/articles/${article_id}`, { inc_votes: vote })
