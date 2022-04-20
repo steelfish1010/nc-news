@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Expand = ({ children }) => {
+const Expand = ({ children, title }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggleOpen = () => {
@@ -10,7 +10,9 @@ const Expand = ({ children }) => {
 	return (
 		<>
 			{isOpen && children}
-			<button onClick={toggleOpen}>{isOpen ? 'Show more' : 'Show less'}</button>
+			<button onClick={toggleOpen}>
+				{isOpen ? `Hide ${title}` : `Show ${title}`}
+			</button>
 		</>
 	);
 };

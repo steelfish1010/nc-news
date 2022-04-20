@@ -18,6 +18,7 @@
 			'nav content';
 	}
 }
+
 .App-logo {
 	height: 40vmin;
 	pointer-events: none;
@@ -55,8 +56,4 @@
 
 .Header {
 	grid-area: header;
-}
-
-.Nav {
-	grid-area: nav;
 }

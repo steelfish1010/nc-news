@@ -1,5 +1,4 @@
 const CommentsList = ({ comments }) => {
-	console.log(comments, '<< comments in CommentsList');
 	return (
 		<ul>
 			{comments.map((comment) => {

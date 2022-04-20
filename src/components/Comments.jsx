@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getCommentsByArticleId } from '../utils/api';
 import CommentsList from './CommentsList';
+import Expand from './Expand';
 
 const Comments = ({ article_id }) => {
 	const [comments, setComments] = useState([]);
@@ -13,15 +14,13 @@ const Comments = ({ article_id }) => {
 			})
 			.catch((err) => {
 				setError(err);
-				console.log(err, '<< err in Comments');
 			});
 	}, [article_id]);
 
-	console.log(comments, '<< comments in Comments');
 	return (
-		<>
+		<Expand title={'comments'}>
 			<CommentsList comments={comments} />
-		</>
+		</Expand>
 	);
 };
 
