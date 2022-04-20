@@ -16,7 +16,7 @@ const Nav = () => {
 		return <nav>Loading...</nav>;
 	} else {
 		return (
-			<nav>
+			<nav className='Nav'>
 				<li key='Home'>
 					<NavLink to='/'>Home</NavLink>
 				</li>

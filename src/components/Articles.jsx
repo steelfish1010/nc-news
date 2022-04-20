@@ -18,7 +18,7 @@ const Articles = () => {
 		return <h2>Loading...</h2>;
 	} else {
 		return (
-			<div>
+			<section className='Articles'>
 				<h2>Articles</h2>
 				<ul>
 					{articles.map((article) => {
@@ -34,7 +34,7 @@ const Articles = () => {
 						);
 					})}
 				</ul>
-			</div>
+			</section>
 		);
 	}
 };

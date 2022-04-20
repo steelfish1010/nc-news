@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Articles from './components/Articles';
-import Topics from './components/Topics';
-import SingleArticle from './components/SingleArticle';
+// import Topics from './components/Topics';
+// import SingleArticle from './components/SingleArticle';
 
 function App() {
 	return (
@@ -14,8 +14,8 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Articles />} />
 				<Route path='/articles' element={<Articles />} />
-				<Route path='/articles/:article_id' element={<SingleArticle />} />
-				<Route path='/topics' element={<Topics />} />
+				{/* <Route path='/articles/:article_id' element={<SingleArticle />} />
+				<Route path='/topics' element={<Topics />} /> */}
 			</Routes>
 		</div>
 	);
