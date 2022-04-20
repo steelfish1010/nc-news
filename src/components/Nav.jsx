@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getTopics } from '../utils/api';
+import '../css/Nav.css';
 
 const Nav = () => {
 	const [topics, setTopics] = useState([]);
@@ -24,7 +25,9 @@ const Nav = () => {
 				{topics.map((topic) => {
 					return (
 						<li key={topic.slug}>
-							<NavLink to={`/articles/${topic.slug}`}>{topic.slug}</NavLink>
+							<NavLink to={`/articles?topic=${topic.slug}`}>
+								{topic.slug}
+							</NavLink>
 						</li>
 					);
 				})}

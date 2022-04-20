@@ -1,40 +1,34 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { getArticles } from '../utils/api';
+import '../css/Articles.css';
+import ArticlesList from './ArticlesList';
 
 const Articles = () => {
 	const [articles, setArticles] = useState([]);
-	const { topic } = useParams();
 
+	const queries = new URLSearchParams(useLocation().search);
+	const sortBy = queries.get('sort_by');
+	const order = queries.get('order');
+	const topic = queries.get('topic');
 	useEffect(() => {
-		getArticles(topic)
+		getArticles(sortBy, order, topic)
 			.then((articlesFromApi) => {
 				setArticles(articlesFromApi);
 			})
 			.catch((err) => console.log(err));
-	}, [topic]);
+	}, [sortBy, order, topic]);
 
-	if (articles.length === 0) {
+	const pageTitle = topic ? `Articles on ${topic}` : 'All Articles';
+
+	if (!articles.length) {
 		return <h2>Loading...</h2>;
 	} else {
 		return (
-			<section className='Articles'>
-				<h2>Articles</h2>
-				<ul>
-					{articles.map((article) => {
-						const { article_id, title, author, votes, comment_count } = article;
-						return (
-							<li key={article_id}>
-								<h3>{title}</h3>
-
-								<p>
-									Written by: {author} Votes: {votes} Comments: {comment_count}
-								</p>
-							</li>
-						);
-					})}
-				</ul>
-			</section>
+			<div>
+				<h2>{pageTitle}</h2>
+				<ArticlesList articles={articles} />
+			</div>
 		);
 	}
 };
