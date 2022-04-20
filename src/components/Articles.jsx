@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { getArticles } from '../utils/api';
 import '../css/Articles.css';
+import ArticlesList from './ArticlesList';
 
 const Articles = () => {
 	const [articles, setArticles] = useState([]);
@@ -20,27 +21,13 @@ const Articles = () => {
 
 	const pageTitle = topic ? `Articles on ${topic}` : 'All Articles';
 
-	if (articles.length === 0) {
+	if (!articles.length) {
 		return <h2>Loading...</h2>;
 	} else {
 		return (
 			<div>
 				<h2>{pageTitle}</h2>
-				<ul className='Articles__article-list'>
-					{articles.map((article) => {
-						const { article_id, title, author, votes, comment_count } = article;
-						return (
-							<li key={article_id}>
-								<h3>
-									<Link to={`/articles/${article_id}`}>{title}</Link>
-								</h3>
-								<p>
-									Written by: {author} Votes: {votes} Comments: {comment_count}
-								</p>
-							</li>
-						);
-					})}
-				</ul>
+				<ArticlesList articles={articles} />
 			</div>
 		);
 	}
