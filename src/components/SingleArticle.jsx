@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { getArticleById } from '../utils/api';
+import Comments from './Comments';
 
 const SingleArticle = () => {
 	const [article, setArticle] = useState({});
@@ -40,6 +41,7 @@ const SingleArticle = () => {
 				Topic: <Link to={`/articles?topic=${topic}`}>{topic}</Link>
 				Votes: {votes} Comments: {comment_count}
 			</p>
+			<Comments article_id={article_id} />
 		</div>
 	);
 };

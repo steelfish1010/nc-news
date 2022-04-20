@@ -29,3 +29,11 @@ export const getTopics = () => {
 		return data.topics;
 	});
 };
+
+export const getCommentsByArticleId = (article_id) => {
+	console.log(article_id, '<< article_id in api.js');
+	return myApi.get(`/articles/${article_id}/comments`).then(({ data }) => {
+		console.log(data.comments, '<< comments in api.js');
+		return data.comments;
+	});
+};
