@@ -3,11 +3,14 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { getArticleById } from '../utils/api';
 import Comments from './Comments';
+import Votes from './Votes';
 
 const SingleArticle = () => {
 	const [article, setArticle] = useState({});
 	const [error, setError] = useState(null);
 	const { article_id } = useParams();
+	const { title, body, topic, author, votes, created_at, comment_count } =
+		article;
 
 	useEffect(() => {
 		getArticleById(article_id)
@@ -18,8 +21,6 @@ const SingleArticle = () => {
 				setError(err);
 			});
 	}, [article_id]);
-	const { title, body, topic, author, votes, created_at, comment_count } =
-		article;
 
 	if (error) {
 		return (
@@ -31,7 +32,7 @@ const SingleArticle = () => {
 	}
 
 	return (
-		<div>
+		<>
 			<h2>{title}</h2>
 			<h3>
 				Written by: {author} on {created_at}
@@ -39,10 +40,12 @@ const SingleArticle = () => {
 			<p>{body}</p>
 			<p>
 				Topic: <Link to={`/articles?topic=${topic}`}>{topic}</Link>
-				Votes: {votes} Comments: {comment_count}
+				Votes: {votes}
+				<Votes article_id={article_id} setArticle={setArticle} votes={votes} />
+				Comments: {comment_count}
 			</p>
 			<Comments article_id={article_id} />
-		</div>
+		</>
 	);
 };
 
