@@ -23,10 +23,8 @@ const SingleArticle = () => {
 			</h3>
 			<p>{body}</p>
 			<p>
-				{/* <Link to={`/articles/${parseInt(article_id) - 1}`}>Previous</Link> */}
 				Topic: <Link to={`/articles?topic=${topic}`}>{topic}</Link>
 				Votes: {votes} Comments: {comment_count}
-				{/* <Link to={`/articles/${parseInt(article_id) + 1}`}>Next</Link> */}
 			</p>
 		</div>
 	);

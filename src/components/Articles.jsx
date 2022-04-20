@@ -16,9 +16,9 @@ const Articles = () => {
 				setArticles(articlesFromApi);
 			})
 			.catch((err) => console.log(err));
-    }, [sortBy, order, topic]);
-    
-    const pageTitle = topic ? `Articles on ${topic}` : 'All Articles';
+	}, [sortBy, order, topic]);
+
+	const pageTitle = topic ? `Articles on ${topic}` : 'All Articles';
 
 	if (articles.length === 0) {
 		return <h2>Loading...</h2>;
