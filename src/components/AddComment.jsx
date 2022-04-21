@@ -5,11 +5,23 @@ const AddComment = ({ setComments, article_id }) => {
 	const [newComment, setNewComment] = useState('');
 	const [isPosting, setIsPosting] = useState(false);
 	const [error, setError] = useState(null);
+	const [isBoxEmpty, setIsBoxEmpty] = useState(false);
+
+	const handleChange = (e) => {
+		setNewComment(e.target.value);
+		setIsBoxEmpty(false);
+		setError(false);
+	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		if (!newComment) {
+			setIsBoxEmpty(true);
+			return;
+		}
 		setError(null);
 		setIsPosting(true);
+		setIsBoxEmpty(false);
 		postComment(article_id, newComment)
 			.then((comment) => {
 				setComments((currComments) => [comment, ...currComments]);
@@ -29,15 +41,15 @@ const AddComment = ({ setComments, article_id }) => {
 				{isPosting ? (
 					<p>Posting comment...</p>
 				) : (
-					<input
-						type='text'
-						required
-						onChange={(e) => setNewComment(e.target.value)}
-					></input>
+					<>
+						<label name='post-comment'>Post comment</label>
+						<textarea name='post-comment' onChange={handleChange}></textarea>
+					</>
 				)}
 
 				<button onClick={handleSubmit}>Add comment</button>
 			</form>
+			{isBoxEmpty && <p>Please enter a comment and try again</p>}
 			{error && <p>Sorry, that didnt work, please try again</p>}
 		</>
 	);

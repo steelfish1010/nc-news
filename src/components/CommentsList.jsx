@@ -9,7 +9,7 @@ const CommentsList = ({ comments }) => {
 							Posted by {author} on {created_at}
 						</p>
 						<p>{body}</p>
-						<p>{votes}</p>
+						<p>Votes: {votes}</p>
 					</li>
 				);
 			})}
