@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getCommentsByArticleId } from '../utils/api';
+import AddComment from './AddComment';
 import CommentsList from './CommentsList';
 import Expand from './Expand';
 
@@ -17,10 +18,14 @@ const Comments = ({ article_id }) => {
 			});
 	}, [article_id]);
 
+	if (!comments.length) return <h3>Loading comments...</h3>;
 	return (
-		<Expand title={'comments'}>
-			<CommentsList comments={comments} />
-		</Expand>
+		<>
+			<AddComment setComments={setComments} article_id={article_id} />
+			<Expand title={'comments'} startOpen={true}>
+				<CommentsList comments={comments} />
+			</Expand>
+		</>
 	);
 };
 

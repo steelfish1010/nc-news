@@ -2,17 +2,20 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { getArticleById } from '../utils/api';
+import AddComment from './AddComment';
 import Comments from './Comments';
 import Votes from './Votes';
 
 const SingleArticle = () => {
 	const [article, setArticle] = useState({});
 	const [error, setError] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
 	const { article_id } = useParams();
 	const { title, body, topic, author, votes, created_at, comment_count } =
 		article;
 
 	useEffect(() => {
+		setIsLoading(true);
 		getArticleById(article_id)
 			.then((articleFromApi) => {
 				setArticle(articleFromApi);
@@ -20,6 +23,7 @@ const SingleArticle = () => {
 			.catch((err) => {
 				setError(err);
 			});
+		setIsLoading(false);
 	}, [article_id]);
 
 	if (error) {
@@ -30,6 +34,7 @@ const SingleArticle = () => {
 			</p>
 		);
 	}
+	if (!Object.keys(article).length) return <h3>Loading...</h3>;
 
 	return (
 		<>

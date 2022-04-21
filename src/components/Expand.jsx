@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-const Expand = ({ children, title }) => {
-	const [isOpen, setIsOpen] = useState(false);
+const Expand = ({ children, title, startOpen }) => {
+	const [isOpen, setIsOpen] = useState(startOpen);
 
 	const toggleOpen = () => {
 		setIsOpen((curr) => !curr);
