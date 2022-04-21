@@ -5,16 +5,19 @@ import '../css/Nav.css';
 
 const Nav = () => {
 	const [topics, setTopics] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 	useEffect(() => {
+		setIsLoading(true);
 		getTopics()
 			.then((topicsFromApi) => {
 				setTopics(topicsFromApi);
+				setIsLoading(false);
 			})
 			.catch((err) => console.log(err));
 	}, []);
 
-	if (!topics) {
-		return <nav>Loading...</nav>;
+	if (isLoading) {
+		return <nav>Loading nav...</nav>;
 	} else {
 		return (
 			<nav className='Nav'>
