@@ -6,6 +6,8 @@ const Votes = ({ article_id, setArticle }) => {
 	const [downVote, setDownVote] = useState(false);
 	const [vote, setVote] = useState(0);
 	const [error, setError] = useState(null);
+	let btnUp = document.querySelector('#upvote');
+	let btnDown = document.querySelector('#downvote');
 
 	useEffect(() => {
 		if (!vote) return;
@@ -27,6 +29,7 @@ const Votes = ({ article_id, setArticle }) => {
 	return (
 		<>
 			<button
+				id='upvote'
 				className='Votes__vote-button'
 				onClick={() => {
 					if (upVote && downVote) {
@@ -34,19 +37,25 @@ const Votes = ({ article_id, setArticle }) => {
 					} else if (!upVote && !downVote) {
 						setVote(1);
 						setUpVote(true);
+						btnUp.style.backgroundColor = '#008000';
+						btnDown.style.backgroundColor = '#C0C0C0';
 					} else if (upVote) {
 						setVote(-1);
 						setUpVote(false);
+						btnUp.style.backgroundColor = '#C0C0C0';
 					} else if (downVote) {
 						setVote(2);
 						setUpVote(true);
 						setDownVote(false);
+						btnUp.style.backgroundColor = '#008000';
+						btnDown.style.backgroundColor = '#C0C0C0';
 					}
 				}}
 			>
 				Upvote
 			</button>
 			<button
+				id='downvote'
 				className='Votes__vote-button'
 				onClick={() => {
 					if (upVote && downVote) {
@@ -54,13 +63,18 @@ const Votes = ({ article_id, setArticle }) => {
 					} else if (!upVote && !downVote) {
 						setVote(-1);
 						setDownVote(true);
+						btnDown.style.backgroundColor = '#800000';
+						btnUp.style.backgroundColor = '#C0C0C0';
 					} else if (downVote) {
 						setVote(1);
 						setDownVote(false);
+						btnDown.style.backgroundColor = '#C0C0C0';
 					} else if (upVote) {
 						setVote(-2);
 						setDownVote(true);
 						setUpVote(false);
+						btnDown.style.backgroundColor = '#800000';
+						btnUp.style.backgroundColor = '#C0C0C0';
 					}
 				}}
 			>

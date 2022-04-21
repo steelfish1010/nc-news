@@ -8,14 +8,25 @@
 		'content';
 	text-align: center;
 }
+.Nav {
+	grid-area: nav;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	list-style-type: none;
+}
 
-/* @media only screen and (min-width: 600px) {
+/* @media only screen and (min-width: 1024px) {
 	.App {
 		grid-template-columns: 25% 75%;
 		grid-template-rows: min-content auto;
 		grid-template-areas:
 			'header header'
 			'nav content';
+	}
+	.Nav {
+		flex-direction: column;
+		justify-content: start;
 	}
 } */
 .App-logo {
@@ -47,7 +58,7 @@
 	}
 }
 
-/* .Articles {
+.Articles {
 	grid-area: content;
 	display: flex;
 	flex-wrap: wrap;
@@ -56,7 +67,3 @@
 .Header {
 	grid-area: header;
 }
-
-.Nav {
-	grid-area: nav;
-} */
