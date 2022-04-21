@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { postComment } from '../utils/api';
 
-const AddComment = ({ setComments, article_id }) => {
+const AddComment = ({ setComments, article_id, user }) => {
 	const [newComment, setNewComment] = useState('');
 	const [isPosting, setIsPosting] = useState(false);
 	const [error, setError] = useState(null);
@@ -22,7 +22,7 @@ const AddComment = ({ setComments, article_id }) => {
 		setError(null);
 		setIsPosting(true);
 		setIsBoxEmpty(false);
-		postComment(article_id, newComment)
+		postComment(article_id, newComment, user)
 			.then((comment) => {
 				setComments((currComments) => [comment, ...currComments]);
 				setIsPosting(false);

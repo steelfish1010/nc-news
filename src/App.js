@@ -5,8 +5,10 @@ import Nav from './components/Nav';
 import Articles from './components/Articles';
 import Topics from './components/Topics';
 import SingleArticle from './components/SingleArticle';
+import { useState } from 'react';
 
 function App() {
+	const [user, setUser] = useState('grumpy19');
 	return (
 		<div className='App'>
 			<Header />
@@ -14,7 +16,10 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Articles />} />
 				<Route path='/articles' element={<Articles />} />
-				<Route path='/articles/:article_id' element={<SingleArticle />} />
+				<Route
+					path='/articles/:article_id'
+					element={<SingleArticle user={user} />}
+				/>
 				<Route path='/topics' element={<Topics />} />
 			</Routes>
 		</div>

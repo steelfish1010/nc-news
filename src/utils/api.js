@@ -45,22 +45,16 @@ export const updateVotes = (article_id, vote) => {
 };
 
 export const postComment = (article_id, body, username) => {
-	if (!username) username = 'tickle122';
-	console.log(
-		article_id,
-		'<< article_id',
-		body,
-		'<< comment',
-		username,
-		'<< username'
-	);
 	return myApi
 		.post(`/articles/${article_id}/comments`, {
 			body: body,
 			username: username,
 		})
 		.then(({ data }) => {
-			console.log(data.comment, '<< comment returned from api');
 			return data.comment;
 		});
+};
+
+export const deleteComment = (comment_id) => {
+	return myApi.delete(`/comments/${comment_id}`);
 };
