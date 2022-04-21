@@ -21,6 +21,7 @@ function App() {
 					element={<SingleArticle user={user} />}
 				/>
 				<Route path='/topics' element={<Topics />} />
+				<Route path='/*' element={<h2>Page not found</h2>} />
 			</Routes>
 		</div>
 	);
