@@ -34,9 +34,6 @@ const Nav = () => {
 						</li>
 					);
 				})}
-				<li key='Topics'>
-					<NavLink to='/topics'>Topics</NavLink>
-				</li>
 			</nav>
 		);
 	}

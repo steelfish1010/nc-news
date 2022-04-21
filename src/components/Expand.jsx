@@ -9,10 +9,10 @@ const Expand = ({ children, title, startOpen }) => {
 
 	return (
 		<>
-			{isOpen && children}
 			<button onClick={toggleOpen}>
 				{isOpen ? `Hide ${title}` : `Show ${title}`}
 			</button>
+			{isOpen && children}
 		</>
 	);
 };

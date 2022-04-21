@@ -6,10 +6,10 @@ import AddComment from './AddComment';
 import Comments from './Comments';
 import Votes from './Votes';
 
-const SingleArticle = () => {
+const SingleArticle = ({ user }) => {
 	const [article, setArticle] = useState({});
 	const [error, setError] = useState(null);
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 	const { article_id } = useParams();
 	const { title, body, topic, author, votes, created_at, comment_count } =
 		article;
@@ -34,22 +34,31 @@ const SingleArticle = () => {
 			</p>
 		);
 	}
-	if (!Object.keys(article).length) return <h3>Loading...</h3>;
 
 	return (
 		<>
-			<h2>{title}</h2>
-			<h3>
-				Written by: {author} on {created_at}
-			</h3>
-			<p>{body}</p>
-			<p>
-				Topic: <Link to={`/articles?topic=${topic}`}>{topic}</Link>
-				Votes: {votes}
-				<Votes article_id={article_id} setArticle={setArticle} votes={votes} />
-				Comments: {comment_count}
-			</p>
-			<Comments article_id={article_id} />
+			{isLoading ? (
+				<h2>Loading article {article_id}...</h2>
+			) : (
+				<>
+					<h2>{title}</h2>
+					<h3>
+						Written by: {author} on {created_at}
+					</h3>
+					<p>{body}</p>
+					<p>
+						Topic: <Link to={`/articles?topic=${topic}`}>{topic}</Link>
+						Votes: {votes}
+						<Votes
+							article_id={article_id}
+							setArticle={setArticle}
+							votes={votes}
+						/>
+						Comments: {comment_count}
+					</p>
+				</>
+			)}
+			<Comments article_id={article_id} user={user} />
 		</>
 	);
 };
