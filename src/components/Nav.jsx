@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { getTopics } from '../utils/api';
 import '../css/Nav.css';
 
-const Nav = () => {
+const Nav = ({ user }) => {
 	const [topics, setTopics] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	useEffect(() => {
@@ -28,12 +28,18 @@ const Nav = () => {
 				{topics.map((topic) => {
 					return (
 						<li key={topic.slug}>
-							<NavLink to={`/articles?topic=${topic.slug}`}>
-								{topic.slug}
-							</NavLink>
+							<NavLink to={`/${topic.slug}`}>{topic.slug}</NavLink>
 						</li>
 					);
 				})}
+				<li key='Login'>
+					{!user && <NavLink to='/login'>Login</NavLink>}
+					{user && (
+						<>
+							Logged in as: <NavLink to='/userprofile'>{user}</NavLink>
+						</>
+					)}
+				</li>
 			</nav>
 		);
 	}

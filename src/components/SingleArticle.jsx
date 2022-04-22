@@ -49,11 +49,13 @@ const SingleArticle = ({ user }) => {
 					<p>
 						Topic: <Link to={`/articles?topic=${topic}`}>{topic}</Link>
 						Votes: {votes}
-						<Votes
-							article_id={article_id}
-							setArticle={setArticle}
-							votes={votes}
-						/>
+						{user && (
+							<Votes
+								article_id={article_id}
+								setArticle={setArticle}
+								votes={votes}
+							/>
+						)}
 						Comments: {comment_count}
 					</p>
 				</>

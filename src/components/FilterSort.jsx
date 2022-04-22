@@ -1,4 +1,4 @@
-const FilterSort = ({ setSortBy, setOrder }) => {
+const FilterSort = ({ sortBy, setSortBy, order, setOrder }) => {
 	function sortHandler(e) {
 		setSortBy(e.target.value);
 	}
@@ -9,13 +9,13 @@ const FilterSort = ({ setSortBy, setOrder }) => {
 	return (
 		<>
 			<label htmlFor='sort'>Sort by</label>
-			<select name='sort' onChange={sortHandler}>
+			<select name='sort' onChange={sortHandler} defaultValue={sortBy}>
 				<option value='created_at'>Date</option>
 				<option value='comment_count'>Comments</option>
 				<option value='votes'>Votes</option>
 			</select>
 			<label htmlFor='order'>Order</label>
-			<select name='order' onChange={orderHandler}>
+			<select name='order' onChange={orderHandler} defaultValue={order}>
 				<option value='desc'>Descending</option>
 				<option value='asc'>Ascending</option>
 			</select>

@@ -67,3 +67,10 @@
 .Header {
 	grid-area: header;
 }
+
+.Votes button__upvote button__upvote--active {
+	background-color: yellow;
+}
+.Votes button__downvote button__downvote--active {
+	background-color: yellow;
+}

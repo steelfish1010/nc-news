@@ -58,3 +58,9 @@ export const postComment = (article_id, body, username) => {
 export const deleteComment = (comment_id) => {
 	return myApi.delete(`/comments/${comment_id}`);
 };
+
+export const getUser = (username) => {
+	return myApi.get(`/users/${username}`).then(({ data }) => {
+		return data.user;
+	});
+};
