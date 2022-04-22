@@ -30,7 +30,9 @@ const Votes = ({ article_id, setArticle }) => {
 		<>
 			<button
 				id='upvote'
-				className='Votes__vote-button'
+				className={`Votes button__upvote ${
+					upVote ? 'button__upvote--active' : 'button__upvote--inactive'
+				}`}
 				onClick={() => {
 					if (upVote && downVote) {
 						console.log('Error! up and down vote at same time');
@@ -56,7 +58,9 @@ const Votes = ({ article_id, setArticle }) => {
 			</button>
 			<button
 				id='downvote'
-				className='Votes__vote-button'
+				className={`Votes button__downvote ${
+					downVote ? 'button__downvote--active' : 'button__downvote--inactive'
+				}`}
 				onClick={() => {
 					if (upVote && downVote) {
 						console.log('Error! up and down vote at same time');

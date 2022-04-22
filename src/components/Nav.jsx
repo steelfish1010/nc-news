@@ -28,12 +28,13 @@ const Nav = () => {
 				{topics.map((topic) => {
 					return (
 						<li key={topic.slug}>
-							<NavLink to={`/articles?topic=${topic.slug}`}>
-								{topic.slug}
-							</NavLink>
+							<NavLink to={`/${topic.slug}`}>{topic.slug}</NavLink>
 						</li>
 					);
 				})}
+				<li key='Login'>
+					<NavLink to='/login'>Login</NavLink>
+				</li>
 			</nav>
 		);
 	}

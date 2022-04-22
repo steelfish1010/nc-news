@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useParams } from 'react-router-dom';
 import '../css/Articles.css';
 import ArticlesList from './ArticlesList';
 import FilterSort from './FilterSort';
@@ -12,13 +12,20 @@ const Articles = () => {
 	const [order, setOrder] = useState(
 		searchParams.get('order') ? searchParams.get('order') : 'DESC'
 	);
-	const topic = searchParams.get('topic');
+	const paramsTopic = useParams().topic;
+	const topic = paramsTopic ? paramsTopic : searchParams.get('topic');
+
 	const pageTitle = topic ? `Articles on ${topic}` : 'All Articles';
 
 	return (
 		<div>
 			<h2>{pageTitle}</h2>
-			<FilterSort setSortBy={setSortBy} setOrder={setOrder} />
+			<FilterSort
+				sortBy={sortBy}
+				setSortBy={setSortBy}
+				order={order}
+				setOrder={setOrder}
+			/>
 			<ArticlesList topic={topic} order={order} sortBy={sortBy} />
 		</div>
 	);

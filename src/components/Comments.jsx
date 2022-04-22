@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getCommentsByArticleId, deleteComment } from '../utils/api';
 import AddComment from './AddComment';
 import Expand from './Expand';
@@ -35,11 +36,17 @@ const Comments = ({ article_id, user }) => {
 	if (!comments.length) return <h3>Loading comments...</h3>;
 	return (
 		<>
-			<AddComment
-				setComments={setComments}
-				article_id={article_id}
-				user={user}
-			/>
+			{user ? (
+				<AddComment
+					setComments={setComments}
+					article_id={article_id}
+					user={user}
+				/>
+			) : (
+				<p>
+					Please <Link to='/login'>login</Link> to post comments or vote
+				</p>
+			)}
 			{deleting && <p>Deleting comment...</p>}
 			{deleteError && (
 				<p>Sorry, couldn't delete that comment. Please try again</p>
