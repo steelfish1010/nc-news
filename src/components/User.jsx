@@ -58,6 +58,7 @@ const User = ({ user, setUser }) => {
 							setNewUser(e.target.value);
 						}}
 					>
+						<option value='null'></option>
 						{userlist.map((user) => {
 							return <option value={user}>{user}</option>;
 						})}
