@@ -5,6 +5,14 @@ const User = ({ user, setUser }) => {
 	const [newUser, setNewUser] = useState('');
 	const [profile, setProfile] = useState({});
 	const [error, setError] = useState(null);
+	const [userlist, setUserList] = useState([
+		'tickle122',
+		'grumpy19',
+		'happyamy2016',
+		'cooljmessy',
+		'weegembump',
+		'jessjelly',
+	]);
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setNewUser('');
@@ -42,14 +50,18 @@ const User = ({ user, setUser }) => {
 				</>
 			)}
 			{!user && (
-				<form name='change-user'>
-					<label>Enter username</label>
-					<input
-						type='text'
+				<form name='select-user'>
+					<label>Select username</label>
+					<select
+						htmlFor='select-user'
 						onChange={(e) => {
 							setNewUser(e.target.value);
 						}}
-					></input>
+					>
+						{userlist.map((user) => {
+							return <option value={user}>{user}</option>;
+						})}
+					</select>
 					<button onClick={handleSubmit}>Submit</button>
 				</form>
 			)}
