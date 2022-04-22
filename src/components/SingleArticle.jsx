@@ -36,19 +36,24 @@ const SingleArticle = ({ user }) => {
 	}
 
 	return (
-		<>
+		<section className='SingleArticle'>
 			{isLoading ? (
 				<h2>Loading article {article_id}...</h2>
 			) : (
-				<>
+				<div className='SingleArticle__article-card'>
 					<h2>{title}</h2>
 					<h3>
 						Written by: {author} on {created_at}
 					</h3>
 					<p>{body}</p>
-					<p>
-						Topic: <Link to={`/articles?topic=${topic}`}>{topic}</Link>
-						Votes: {votes}
+					<div className='SingleArticle__article-footnotes'>
+						<p>
+							Topic:{' '}
+							<Link to={`/articles?topic=${topic}`} className='Link'>
+								{topic}
+							</Link>
+						</p>
+						<p>Votes: {votes}</p>
 						{user && (
 							<Votes
 								article_id={article_id}
@@ -56,12 +61,12 @@ const SingleArticle = ({ user }) => {
 								votes={votes}
 							/>
 						)}
-						Comments: {comment_count}
-					</p>
-				</>
+						<p>Comments: {comment_count}</p>
+					</div>
+				</div>
 			)}
 			<Comments article_id={article_id} user={user} />
-		</>
+		</section>
 	);
 };
 

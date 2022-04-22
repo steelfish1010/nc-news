@@ -25,16 +25,16 @@ const ArticlesList = ({ topic, order, sortBy }) => {
 		return <h2>Sorry, no articles found on the topic of {topic}.</h2>;
 	}
 	return (
-		<>
+		<div className='Articles-list'>
 			{isLoading && <h2>Loading articles...</h2>}
 
-			<ul className='Articles__article-list'>
+			<ul className='Articles-list__list'>
 				{articles.map((article) => {
 					const { article_id, title, author, votes, comment_count } = article;
 					return (
-						<li key={article_id}>
+						<li key={article_id} className='Articles-list__article-card'>
 							<h3>
-								<Link to={`/articles/${article_id}`}>{title}</Link>
+								<Link to={`/articles/${article_id}`} className='Link'>{title}</Link>
 							</h3>
 							<p>
 								Written by: {author} Votes: {votes} Comments: {comment_count}
@@ -43,7 +43,7 @@ const ArticlesList = ({ topic, order, sortBy }) => {
 					);
 				})}
 			</ul>
-		</>
+		</div>
 	);
 };
 

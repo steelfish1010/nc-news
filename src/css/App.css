@@ -7,23 +7,33 @@
 		'nav'
 		'content';
 	text-align: center;
-	background-color: lightgrey;
-	border: 2px;
-	border-color: black;
+	background-color: #eaeaea;
+
 	padding: 0em;
+}
+.Link {
+	color: #293241;
+}
+.NavLink {
+	color: #e0fbfc;
 }
 .Nav {
 	grid-area: nav;
-	background-color: #1c232f;
+	background-color: #3d5a80;
 	min-height: 5vh;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 	list-style-type: none;
-	font-size: calc(10px + 2vmin);
-	color: white;
+	font-size: calc(5px + 2vmin);
+	color: #98c1d9;
+	padding: 0.5em;
 }
 
+p {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
 /* @media only screen and (min-width: 1024px) {
 	.App {
 		grid-template-columns: 25% 75%;
@@ -58,26 +68,57 @@
 .Articles {
 	grid-area: content;
 	display: flex;
-	flex-wrap: wrap;
-	padding: 0.5em;
+	flex-flow: column wrap;
+	padding: 1em;
+	justify-content: center;
 }
 
-.Articles__article-list {
+.Articles__title {
+	justify-content: center;
+}
+
+.Articles-list__list {
 	border: 2px;
 	border-color: black;
+
+	padding: 1em;
+	display: flex;
+	flex-wrap: wrap;
+
+	box-sizing: border-box;
+}
+.Articles-list__article-card {
+	background-color: #e0fbfc;
+	border: 0.1em;
+	border-color: black;
+	border-style: solid;
+	border-radius: 2%;
+	margin: 0.5em;
 	padding: 0.5em;
+	font-size: medium;
+	text-align: left;
+	display: flex;
+	flex-flow: column wrap;
+	flex-grow: 1;
+}
+
+.SingleArticle__article-footnotes {
+	display: flex;
+	flex-direction: row;
 }
 .Header {
 	grid-area: header;
-	background-color: #1c232f;
-	min-height: 5vh;
+	background-color: #293241;
+	min-height: 3vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	font-size: calc(10px + 2vmin);
-	color: white;
+	color: #eaeaea;
 	padding: 1em;
+	font-weight: bold;
+	letter-spacing: 0.05em;
 }
 
 .Votes button__upvote button__upvote--active {
@@ -85,4 +126,36 @@
 }
 .Votes button__downvote button__downvote--active {
 	background-color: yellow;
+}
+
+.label__filter {
+	padding-right: 0.5em;
+	padding-left: 1em;
+}
+.label__sort {
+	padding-right: 0.5em;
+	padding-left: 1em;
+}
+
+.select__filter {
+	border-radius: 5%;
+}
+.select__sort {
+	border-radius: 5%;
+}
+
+.SingleArticle__article-card {
+	background-color: #e0fbfc;
+	border: 0.1em;
+	border-color: #293241;
+	border-style: solid;
+	border-radius: 0.5%;
+	margin: 0.5em;
+	padding: 0.5em;
+	font-size: medium;
+	text-align: left;
+	display: flex;
+	flex-flow: column wrap;
+	flex-grow: 1;
+	color: #3d5a80;
 }
