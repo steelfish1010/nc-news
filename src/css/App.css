@@ -59,8 +59,14 @@
 	grid-area: content;
 	display: flex;
 	flex-wrap: wrap;
+	padding: 0.5em;
 }
 
+.Articles__article-list {
+	border: 2px;
+	border-color: black;
+	padding: 0.5em;
+}
 .Header {
 	grid-area: header;
 	background-color: #1c232f;
