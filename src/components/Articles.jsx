@@ -18,8 +18,8 @@ const Articles = () => {
 	const pageTitle = topic ? `Articles on ${topic}` : 'All Articles';
 
 	return (
-		<div>
-			<h2>{pageTitle}</h2>
+		<div className='Articles'>
+			<h2 className='Articles__title'>{pageTitle}</h2>
 			<FilterSort
 				sortBy={sortBy}
 				setSortBy={setSortBy}

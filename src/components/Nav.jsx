@@ -22,21 +22,32 @@ const Nav = ({ user }) => {
 		return (
 			<nav className='Nav'>
 				<li key='Home'>
-					<NavLink to='/'>Home</NavLink>
+					<NavLink to='/' className='NavLink'>
+						Home
+					</NavLink>
 				</li>
 
 				{topics.map((topic) => {
 					return (
 						<li key={topic.slug}>
-							<NavLink to={`/${topic.slug}`}>{topic.slug}</NavLink>
+							<NavLink to={`/${topic.slug}`} className='NavLink'>
+								{topic.slug}{' '}
+							</NavLink>
 						</li>
 					);
 				})}
 				<li key='Login'>
-					{!user && <NavLink to='/login'>Login</NavLink>}
+					{!user && (
+						<NavLink to='/login' className='NavLink'>
+							Login
+						</NavLink>
+					)}
 					{user && (
 						<>
-							Logged in as: <NavLink to='/userprofile'>{user}</NavLink>
+							Logged in as:{' '}
+							<NavLink to='/userprofile' className='NavLink'>
+								{user}
+							</NavLink>
 						</>
 					)}
 				</li>

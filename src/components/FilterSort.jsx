@@ -7,19 +7,33 @@ const FilterSort = ({ sortBy, setSortBy, order, setOrder }) => {
 		setOrder(e.target.value);
 	}
 	return (
-		<>
-			<label htmlFor='sort'>Sort by</label>
-			<select name='sort' onChange={sortHandler} defaultValue={sortBy}>
+		<div className='FilterSort'>
+			<label className='label__filter' htmlFor='sort'>
+				Sort by
+			</label>
+			<select
+				className='select__filter'
+				name='sort'
+				onChange={sortHandler}
+				defaultValue={sortBy}
+			>
 				<option value='created_at'>Date</option>
 				<option value='comment_count'>Comments</option>
 				<option value='votes'>Votes</option>
 			</select>
-			<label htmlFor='order'>Order</label>
-			<select name='order' onChange={orderHandler} defaultValue={order}>
+			<label className='label__sort' htmlFor='order'>
+				Order
+			</label>
+			<select
+				className='select__sort'
+				name='order'
+				onChange={orderHandler}
+				defaultValue={order}
+			>
 				<option value='desc'>Descending</option>
 				<option value='asc'>Ascending</option>
 			</select>
-		</>
+		</div>
 	);
 };
 
